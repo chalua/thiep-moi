@@ -16,10 +16,8 @@
     <div class="book-container">
         <div class="book" id="book">
             
-              
-            <!-- Bìa sách (giữ nguyên) -->
             <div class="book-cover" id="bookCover">
-                <img src="/assert/Logo-School-removebg-preview.png" alt="Logo trường" class="school-logo">
+                <img src="assert/Logo-School-removebg-preview.png" alt="Logo trường" class="school-logo">
                 <h1>THIỆP MỜI DỰ TỐT NGHIỆP</h1>
                 <h2>ĐẠI HỌC CÔNG THƯƠNG TP. HỒ CHÍ MINH</h2>
             </div>
@@ -31,7 +29,7 @@
                     <div class="corner-decoration bottom-right"></div>
                     <div class="response-section-2">
                     <div style="display: flex;">
-                        <img src="/assert/z6489101642440_9c9747a9098b432d8d6bc6439ca327e9.jpg" alt="Ảnh tốt nghiệp" class="graduate-photo">
+                        <img src="assert/z6489101642440_9c9747a9098b432d8d6bc6439ca327e9.jpg" alt="Ảnh tốt nghiệp" class="graduate-photo">
                         <!-- <img src="https://via.placeholder.com/200x200" alt="Ảnh tốt nghiệp" class="graduate-photo"> -->
                     </div>
                     <h2 class="graduate-name">HUỲNH THANH NHÃ</h2>
@@ -51,7 +49,6 @@
                 <div class="page-flip-area right-flip-area" onclick="turnPage(1)"></div>
             </div>
 
-            <!-- Trang 2 -->
             <div class="page page-left">
                 <div class="page-content">
                     <div class="corner-decoration top-left"></div>
@@ -93,7 +90,6 @@
                 <div class="page-flip-area left-flip-area" onclick="turnPage(-1)"></div>
             </div>
 
-            <!-- Trang 3  -->
             <div class="page page-right">
                 <div class="page-content">
                     <div class="corner-decoration top-left"></div>
@@ -155,20 +151,20 @@
         let currentX = 0;
         let lastDragTime = 0;
         
-        // Mở sách khi click vào bìa
+  
         bookCover.addEventListener('click', function() {
             if (!isBookOpen) {
                 openBook();
             }
         });
         
-        // Mở sách
+   
         function openBook() {
             book.classList.add('open');
             isBookOpen = true;
         }
         
-        // Đóng sách
+
         function closeBook() {
             book.classList.remove('open');
             // Xóa tất cả các lớp turn-page-*
@@ -179,10 +175,10 @@
             isBookOpen = false;
         }
         
-        // Lật trang (cải tiến)
+
         function turnPage(direction) {
             const now = Date.now();
-            if (now - lastDragTime < 500) return; // Chống spam lật trang
+            if (now - lastDragTime < 500) return; 
             lastDragTime = now;
             
             if (!isBookOpen && direction > 0) {
@@ -200,11 +196,11 @@
             
             currentPage += direction;
             
-            // Reset tất cả các lớp trạng thái
+
             book.className = 'book';
             if (isBookOpen) book.classList.add('open');
             
-            // Thêm lớp trạng thái mới cho tất cả các trang đã lật
+
             for (let i = 1; i < currentPage; i++) {
                 book.classList.add('turn-page-' + i);
             }
@@ -221,7 +217,7 @@
         document.addEventListener('touchend', endDrag);
         
         function startDrag(e) {
-    // Kiểm tra nếu sự kiện xảy ra trên các phần tử có thể nhập liệu
+
     const target = e.target;
     const isInputElement = target.tagName === 'INPUT' || 
                           target.tagName === 'TEXTAREA' || 
@@ -264,7 +260,7 @@ function drag(e) {
             isDragging = false;
         }
         
-        // Hiệu ứng khi load trang
+
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 book.style.transition = 'transform 1s ease';
@@ -275,16 +271,14 @@ function drag(e) {
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
       
         const supabase = createClient('https://ozvvceemcughejdcjxhp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96dnZjZWVtY3VnaGVqZGNqeGhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2MzM2NDksImV4cCI6MjA2MDIwOTY0OX0.DdABOEjLQqIyKoNb4f_ONIcrLO7OOgWmvVpDiJRxqhQ');
-    
-        // Biến lưu trạng thái tham dự
+
         let isAttending = null;
         const btnAttend = document.getElementById('btnAttend');
         const btnDecline = document.getElementById('btnDecline');
         const wishForm = document.getElementById('wishForm');
         const confirmationMessage = document.getElementById('confirmationMessage');
         const responseMessage = document.getElementById('responseMessage');
-    
-        // Xử lý sự kiện click nút Tham dự
+
         btnAttend.addEventListener('click', function() {
             isAttending = true;
             this.classList.add('active');
@@ -297,8 +291,7 @@ function drag(e) {
             confirmationMessage.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
             confirmationMessage.style.color = '#28a745';
         });
-        
-        // Xử lý sự kiện click nút Không tham dự
+
         btnDecline.addEventListener('click', function() {
             isAttending = false;
             this.classList.add('active');
@@ -340,7 +333,6 @@ function drag(e) {
                 
                 if (error) throw error;
                 
-                // Chuyển hướng sang trang cảm ơn với thông báo phù hợp
                 window.location.href = `thiep-moi/thankyou.html?response=${isAttending ? 'yes' : 'decline'}`;
                 
             } catch (error) {
