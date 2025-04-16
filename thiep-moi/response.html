@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Tốt Nghiệp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #b21f1f;
+            --accent-color: #fdbb2d;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+        
+        .invitation-card {
+            max-width: 800px;
+            margin: 50px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: white;
+            position: relative;
+        }
+        
+        .card-header {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .graduate-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .school-logo {
+            max-height: 80px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+        
+        .card-body {
+            padding: 30px;
+        }
+        
+        .invitation-details {
+            margin-bottom: 30px;
+        }
+        
+        .detail-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(26, 42, 108, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .response-section {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .response-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .response-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .btn-response {
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .btn-attend {
+        background-color: #e9ecef;
+        color: #495057;
+    }
+    
+    .btn-decline {
+        background-color: #e9ecef;
+        color: #495057;
+    }
+    
+    .btn-response:hover, .btn-response:focus {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-attend:hover, .btn-attend:focus {
+        background-color: #0d1a4a;
+        color: #d1d7dc;
+    }
+    
+    .btn-decline:hover, .btn-decline:focus {
+        background-color: #0d1a4a;
+        color: #d1d7dc;
+    }
+    
+    /* Thêm style cho trạng thái active */
+    .btn-attend.active {
+        background-color: #0d1a4a;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+        transform: translateY(1px);
+        color: #d1d7dc;
+    }
+    
+    .btn-decline.active {
+        background-color: #0d1a4a;;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+        transform: translateY(1px);
+        color: #d1d7dc;
+    }
+        
+        
+        .wish-form {
+            margin-top: 20px;
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+        }
+        
+        .btn-send {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-send:hover {
+            background-color: #e6a500;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .confirmation-message {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(40, 167, 69, 0.1);
+            border-radius: 10px;
+            color: #28a745;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .personal-url {
+            background-color: #f1f3f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            word-break: break-all;
+        }
+        
+        .url-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .url-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .zalo {
+            background-color: #0068ff;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .link-copy {
+            background-color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .invitation-card {
+                margin: 20px auto;
+                border-radius: 0;
+            }
+            
+            .response-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-response {
+                width: 100%;
+            }
+        }
+
+        /* location */
+
+        .location-card {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: #eee;
+        }
+        .location-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        .transport-option {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .transport-icon {
+            width: 40px;
+            height: 40px;
+            background: #1a2a6c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        /*event detail*/
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(to bottom, #1a2a6c, #fdbb2d);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #1a2a6c;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -10px; }
+        .left::after { right: -10px; }
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="invitation-card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/150x150" alt="Ảnh tốt nghiệp" class="graduate-photo">
+                <img src="https://via.placeholder.com/150x80" alt="Logo trường" class="school-logo">
+                <h1>THIỆP MỜI TỐT NGHIỆP</h1>
+                <h2>Nguyễn Văn A - Đại học ABC</h2>
+            </div>
+
+            <div class="timeline" style="padding-top: 20px;">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>08:00 - 08:30</h3>
+                        <p>Đón tiếp khách mời</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>08:30 - 09:15</h3>
+                        <p>Diễu hành tốt nghiệp</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>08:30 - 09:15</h3>
+                        <p>Diễu hành tốt nghiệp</p>
+                    </div>
+                </div>
+                <!-- Thêm các mốc thời gian khác -->
+            </div>
+            
+            <div class="card-body">
+
+                <div class="location-card">
+                    <div class="invitation-details" style="display: flex; flex-direction: column; margin-right: 20px;">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Thời gian</h5>
+                                <p>08:00 - 11:00, Thứ Bảy ngày 15/06/2024</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Địa điểm</h5>
+                                <p>Hội trường lớn - Trường Đại học ABC<br>123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h5>Người mời</h5>
+                                <p>Nguyễn Văn A<br>Cử nhân ngành Công nghệ Thông tin</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-container" id="map">
+                        <!-- Google Maps iframe sẽ được chèn vào đây -->
+                        <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=140%20%C4%90.%20L%C3%AA%20Tr%E1%BB%8Dng%20T%E1%BA%A5n,%20T%C3%A2y%20Th%E1%BA%A1nh,%20T%C3%A2n%20Ph%C3%BA,%20H%E1%BB%93%20Ch%C3%AD%20Minh,%20Vi%E1%BB%87t%20Nam+(H%E1%BB%93%20c%C3%A1%20Koi%20Tr%C6%B0%E1%BB%9Dng%20%C4%90%E1%BA%A1i%20h%E1%BB%8Dc%20C%C3%B4ng%20Th%C6%B0%C6%A1ng%20TP.HCM)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/collections/drones/">buy drones</a></iframe>
+                    </div>
+                    <!-- <div class="location-info">
+                        <h2>Hội trường lớn - ĐH ABC</h2>
+                        <p>123 Đường ABC, Quận XYZ, TP.HCM</p>
+                        
+                        <div class="transport-option">
+                            <div class="transport-icon"><i class="fas fa-car"></i></div>
+                            <div>
+                                <h4>Bãi đậu xe</h4>
+                                <p>Khu vực A và B, miễn phí cho khách mời</p>
+                            </div>
+                        </div>
+                        
+                    </div> -->
+
+                    
+                </div>
+                <br>
+                <div class="response-section">
+                    <h4 class="response-title">BẠN CÓ THAM DỰ BUỔI LỄ KHÔNG?</h4>
+                    
+                    <div class="response-buttons">
+                        <button for="btnAttend" class="btn-response btn-attend" id="btnAttend" name="attending" value="yes">
+                            <i class="fas fa-check-circle me-2"></i> Tôi sẽ tham dự
+                        </button>
+                        
+                        <button for="btnDecline" class="btn-response btn-decline" id="btnDecline" name="attending" value="no">
+                            <i class="fas fa-times-circle me-2"></i> Không tham dự
+                        </button>
+                    </div>
+                    
+                    <div class="wish-form" id="wishForm">
+                        <input type="text" class="form-control" id="name" placeholder="nhập họ tên">
+                        <textarea class="form-control" id="wishMessage" rows="3" placeholder="Gửi lời chúc đến tân cử nhân..."></textarea>
+                        <div class="text-center">
+                            <button class="btn-send" id="btnSendWish">
+                                <i class="fas fa-paper-plane me-2"></i> Gửi lời chúc
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="confirmation-message" id="confirmationMessage">
+                        <i class="fas fa-check-circle me-2"></i>
+                        <span id="responseMessage">Cảm ơn bạn đã phản hồi!</span>
+                    </div>
+                </div>
+                
+                <!-- <div class="personal-url">
+                    <div class="url-label">Liên kết cá nhân hóa của bạn:</div>
+                    <div class="url-value" id="personalUrl">yourdomain.com/invite/nguyen-van-a</div>
+                    
+                    <div class="share-buttons">
+                        <a href="#" class="share-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-btn zalo">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                        <a href="#" class="share-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <button class="share-btn link-copy" id="btnCopyLink">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+      
+        const supabase = createClient('https://ozvvceemcughejdcjxhp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96dnZjZWVtY3VnaGVqZGNqeGhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2MzM2NDksImV4cCI6MjA2MDIwOTY0OX0.DdABOEjLQqIyKoNb4f_ONIcrLO7OOgWmvVpDiJRxqhQ');
+    
+        // Biến lưu trạng thái tham dự
+        let isAttending = null;
+        const btnAttend = document.getElementById('btnAttend');
+        const btnDecline = document.getElementById('btnDecline');
+        const wishForm = document.getElementById('wishForm');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        const responseMessage = document.getElementById('responseMessage');
+    
+        // Xử lý sự kiện click nút Tham dự
+        btnAttend.addEventListener('click', function() {
+            isAttending = true;
+            this.classList.add('active');
+            btnDecline.classList.remove('active');
+            
+            // responseMessage.textContent = 'Cảm ơn bạn đã xác nhận tham dự!';
+            // confirmationMessage.style.display = 'block';
+            // wishForm.style.display = 'block';
+            
+            confirmationMessage.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+            confirmationMessage.style.color = '#28a745';
+        });
+        
+        // Xử lý sự kiện click nút Không tham dự
+        btnDecline.addEventListener('click', function() {
+            isAttending = false;
+            this.classList.add('active');
+            btnAttend.classList.remove('active');
+            
+            // responseMessage.textContent = 'Cảm ơn bạn đã phản hồi. Rất tiếc vì bạn không thể tham dự!';
+            // confirmationMessage.style.display = 'block';
+            // wishForm.style.display = 'block';
+            
+            confirmationMessage.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+            confirmationMessage.style.color = '#28a745';
+        });
+    
+        // Xử lý gửi form
+        document.getElementById('btnSendWish').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const message = document.getElementById('wishMessage').value.trim();
+            
+            if (!name) {
+                alert('Vui lòng nhập tên của bạn!');
+                return;
+            }
+            
+            if (isAttending === null) {
+                alert('Vui lòng chọn trạng thái tham dự!');
+                return;
+            }
+            
+            try {
+                const { data, error } = await supabase
+                    .from('invite')
+                    .insert([{ 
+                        name, 
+                        message, 
+                        is_attending: isAttending 
+                    }]);
+                
+                if (error) throw error;
+                
+                // Chuyển hướng sang trang cảm ơn với thông báo phù hợp
+                window.location.href = `thankyou.html?response=${isAttending ? 'yes' : 'decline'}`;
+                
+            } catch (error) {
+                console.error('Lỗi khi gửi dữ liệu:', error);
+                alert('Có lỗi xảy ra khi gửi phản hồi. Vui lòng thử lại!');
+            }
+        });
+    </script>
+      
+</body>
+</html>

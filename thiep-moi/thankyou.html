@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời Cảm Ơn </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #b21f1f;
+            --accent-color: #fdbb2d;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .thank-you-container {
+            max-width: 600px;
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thank-you-container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--accent-color) 0%, rgba(253,187,45,0) 70%);
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+        
+        .thank-you-container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary-color) 0%, rgba(26,42,108,0) 70%);
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+        
+        
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .highlight {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .btn-return {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .btn-return:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        
+        .graduate-info {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #ddd;
+        }
+        
+        .graduate-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin: 0 auto 15px;
+        }
+        
+        .graduate-name {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .graduate-school {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 576px) {
+            .thank-you-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="checkmark-circle">
+           <img style="height: 150px;" src="https://s3.getstickerpack.com/storage/uploads/sticker-pack/bugcat-capoo-1/sticker_9.gif?0b477bba2520a9798dbb4206fdf15a40" alt="">
+        </div>
+        
+        <h1>CẢM ƠN BẠN NHIỀU NHA!</h1>
+        
+        <p>Mình đã nhận được phản hồi của bạn.</p>
+        <p id="response-message"></p>
+        
+        <a href="javascript:history.back().back()" class="btn-return">
+            <i class="fas fa-arrow-left me-2"></i> Quay lại trang trước
+        </a>
+        
+        <!-- <div class="graduate-info">
+            <img src="https://via.placeholder.com/100x100" alt="Ảnh tốt nghiệp" class="graduate-photo">
+            <div class="graduate-name">Nguyễn Văn A</div>
+            <div class="graduate-school">Đại học ABC - Khóa 2024</div>
+        </div> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kiểm tra tham số URL để hiển thị thông báo phù hợp
+            const urlParams = new URLSearchParams(window.location.search);
+            const responseType = urlParams.get('response');
+            const responseMessage = document.getElementById('response-message');
+            
+            if (responseType === 'decline') {
+                responseMessage.textContent = 'Cảm ơn lời chúc ý nghĩa của bạn. Điều này thực sự quan trọng với tôi!';
+            } else if (responseType === 'yes') {
+                responseMessage.textContent = 'Rất vui khi biết bạn sẽ tham dự buổi lễ. Hẹn gặp bạn vào ngày 24/04/2025! Cảm ơn lời chúc ý nghĩa của bạn. Điều này thực sự quan trọng với tôi!';
+            }
+            
+            // Thêm hiệu ứng khi load trang
+            setTimeout(() => {
+                document.querySelector('.thank-you-container').style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
