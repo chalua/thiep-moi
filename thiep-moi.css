@@ -389,6 +389,8 @@
             .book-container {
                top: 0px;
                margin: 20px;
+               height: 100% !important;
+               padding-bottom: 40px !important;
             }
             
             .graduate-photo {
@@ -398,18 +400,6 @@
             
             .graduate-name {
                 font-size: 1.8rem;
-            }
-
-            .book-container {
-                perspective: 2000px;
-                width: 100%;
-                max-width: 1200px;
-                height: 100% !important;
-                position: relative;
-                margin: 50px auto;
-                user-select: none;
-                position: fixed;
-                padding-bottom: 40px !important;
             }
             
             .page {
