@@ -272,17 +272,7 @@
             margin-bottom: 10px;
         }
 
-        .book-container {
-            perspective: 2000px;
-            width: 100%;
-            max-width: 1200px;
-            height: 100% !important;
-            position: relative;
-            margin: 50px auto;
-            user-select: none;
-            position: fixed;
-            padding-bottom: 40px !important;
-        }
+        
         
         .gold-seal {
             position: absolute;
@@ -408,6 +398,18 @@
             
             .graduate-name {
                 font-size: 1.8rem;
+            }
+
+            .book-container {
+                perspective: 2000px;
+                width: 100%;
+                max-width: 1200px;
+                height: 100% !important;
+                position: relative;
+                margin: 50px auto;
+                user-select: none;
+                position: fixed;
+                padding-bottom: 40px !important;
             }
             
             .page {
