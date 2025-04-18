@@ -549,7 +549,7 @@ display: none;
 height: 100% !important;
 }
 .detail-icon{
-    width: 41px;
+    width: 41px !important;
     height: 45px;
 }
 }
