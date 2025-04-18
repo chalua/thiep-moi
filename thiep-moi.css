@@ -418,6 +418,24 @@ opacity: 1;
 
 /* Responsive */
 @media (max-width: 768px) {
+.book-cover h1{
+font-size: 1.3em;
+text-align: center;
+}
+.personal-message{
+font-size: 0.9em;
+}
+.year{
+position: absolute;
+bottom: 30px;
+}
+.decoration-icon{
+top: 300px;
+}
+.book-cover h2{
+font-size: 1.3em;
+text-align: center;
+}
 .detail-item{
 width: 500px;
 }

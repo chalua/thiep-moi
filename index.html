@@ -178,6 +178,12 @@
                 openBook();
             }
         });
+
+        bookCover.addEventListener('touchmove', function() {
+            if (!isBookOpen) {
+                openBook();
+            }
+        });
         
         // Mở sách
         function openBook() {
