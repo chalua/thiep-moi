@@ -548,6 +548,10 @@ display: none;
 .page-right{
 height: 100% !important;
 }
+.detail-icon{
+    width: 41px;
+    height: 45px;
+}
 }
 
 .invitation-details{
