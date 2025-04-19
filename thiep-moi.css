@@ -9,7 +9,7 @@
 
 body {
 background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-font-family: 'Times New Roman', Times, serif;;
+font-family: 'Meiryo UI', Times, serif;;
 overflow-x: hidden;
 min-height: 100vh;
 display: flex;
@@ -201,7 +201,6 @@ font-size: 1.7rem;
 margin-bottom: 15px;
 text-align: center;
 line-height: 1.8;
-font-family: 'Nurhalifa Bold Script';
 }
 
 .graduation-info strong {
@@ -843,4 +842,3 @@ p{
 margin: 0px 20px 0px 20px;
 font-size: 1.2em;
 }
-/* [Rest of the previous CSS remains the same] */
