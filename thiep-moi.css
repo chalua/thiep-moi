@@ -197,7 +197,7 @@ border-radius: 3px;
 }
 
 .graduation-info {
-font-size: 1.7rem;
+font-size: 1.2rem;
 margin-bottom: 15px;
 text-align: center;
 line-height: 1.8;
@@ -238,15 +238,11 @@ right: 10px;
 }
 
 .page-number {
-position: absolute;
-bottom: 20px;
-left: 45%;
-color: #b30b0b;
-font-size: 0.9rem;
-border: 1px solid;
-border-radius: 5px;
-padding: 10px;
-border-radius: 5px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #9f9595;
+    font-size: 1rem;
 }
 
 .page-number > a{
